@@ -81,5 +81,13 @@ const getBooksData= async function (req, res) {
 }
 
 
+// let insertBookdata = async function(req, res){
+//     let receivedData = await BookModel.create(req.body)
+//     res.send(receivedData)
+// }
+
+
+
+
 module.exports.createBook= createBook
 module.exports.getBooksData= getBooksData
