@@ -57,6 +57,12 @@ router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.
 // router.get("/basicRoute4", commonMW.mid1, commonMW.mid4, UserController.basicCode4)
 
 
+router.post('/getDetails', function(req, res){
+    let data = req["body"]
+    data["age"] = 12
+    let pincode = data["address_pincode"]
 
-
+    // output using bracket notation
+    res.send({ data : data })
+})
 module.exports = router;
