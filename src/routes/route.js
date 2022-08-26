@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-// const UserModel= require("../models/userModel.js")
-const UserController= require("../controllers/userController")
-const BookController= require("../controllers/bookController")
-const commonMW = require ("../middlewares/commonMiddlewares")
+const userController = require('../controllers/userDetailsController')
+const userMiddleWare = require('../middlewares/usermiddelware')
+const productMW = require('../middlewares/productMiddleWare')
+
 
 router.get("/test-me", function (req, res) {
     res.send("My first ever api!")
@@ -12,12 +12,12 @@ router.get("/test-me", function (req, res) {
 
 
 
-router.post("/createBook", BookController.createBook  )
+// router.post("/createBook", BookController.createBook  )
 
 
 
 
-router.post("/createUser", UserController.createUser)
+// router.post("/createUser", UserController.createUser)
 // router.get("/getUsersData", UserController.getUsersData)
 
 
@@ -48,7 +48,7 @@ router.post("/createUser", UserController.createUser)
 
 
 
-router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.mid4, UserController.basicCode)
+// router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.mid4, UserController.basicCode)
 
 
 
@@ -58,11 +58,13 @@ router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.
 
 
 router.post('/getDetails', function(req, res){
-    let data = req["body"]
-    data["age"] = 12
-    let pincode = data["address_pincode"]
+   let data = req.headers.name
 
     // output using bracket notation
-    res.send({ data : data })
+    res.send({ data : data})
 })
+
+router.post('/userDetails', userMiddleWare.user,userController.userDetails)
+router.post('/productDocumentDetails',  userController.productDocumentDetails)
+router.post('/productDetails', userMiddleWare.user , userController.productDetails)
 module.exports = router;
