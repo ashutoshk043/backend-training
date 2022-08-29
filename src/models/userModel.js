@@ -5,14 +5,13 @@ const userSchema = new mongoose.Schema( {
     lastName: String,
     mobile: {
         type: String,
-
         required: true
     },
     emailId: String,
     password: String,
     gender: {
         type: String,
-        enum: ["male", "female", "other"]
+        enum: ["male", "female", "others"]
     },
     age: Number,
 }, { timestamps: true });
