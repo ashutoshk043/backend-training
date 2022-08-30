@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const { findByIdAndUpdate } = require('../models/userModel')
 
 const users = async (req, res) => {
-    data = req.body
+   let data = req.body
 
     let regUser = await registerModel.create(data)
 
@@ -18,7 +18,7 @@ const login = async (req, res) => {
     let findUser = await registerModel.findOne({emailId:rEmailId, password:rPass})
     if(!findUser) res.send({error:"Either Email or Password Incorrect" })
     
-    let token = await jwt.sign({userId: findUser._id.toString()}, 'Secrete_key');
+    let token = await jwt.sign({userId: findUser._id}, 'Secrete_key');
     res.send({status:true, Token_is:token })
 }
 
@@ -36,7 +36,7 @@ const getUserData = (req, res) =>{
 
 const updateUser = async (req, res) =>{
     let data = req.params
-    let rUserId = data.userId.toString()
+    let rUserId = data.userId
     let findUser = await registerModel.findById(rUserId)
     if(!findUser) res.send({error:"User Does not exists.."})
 
@@ -46,12 +46,12 @@ const updateUser = async (req, res) =>{
 
 const deleteUser = async (req, res) =>{
     let data = req.params
-    let rUserId = data.userId.toString()
+    let rUserId = data.userId
 
     let findUser = await registerModel.findById(rUserId)
     if(!findUser) res.send({error: "User Does not exists..."})
-    findUser.isDeleted = true
-    res.send({status:true, NewStatus: findUser})
+    let updatedStatus = await registerModel.findByIdAndUpdate({_id:rUserId}, {$set:{isDeleted:true,upsert:true}},{new:true})
+    res.send({status:true, NewStatus: updatedStatus})
 
 }
 
