@@ -18,6 +18,9 @@
 // An asignment :
 1.  WRITE A GET API TO GET THE LIST OF ALL THE "vaccination sessions by district id" for any given district id and for any given date
 2.  GOTO  http://api.openweathermap.org => “subscribe” current weather data ==> get api key for Free version ==> create new account and Verify your emailId( Must verify to avoid issues) => go to My APi keys under your account name(top right corner) or https://home.openweathermap.org/api_keys => save the key/appid somewhere. Now proceed further
+
+// API id for weather details by ashutosh ---  45093faaeb9e461a559c33a86cfbc377   45093faaeb9e461a559c33a86cfbc377
+
 Create API's to do each of the following:
                     - get weather of London from http://api.openweathermap.org/data/2.5/weather?q=London&appid=<useYourOwnAppId>  (NOTE: must use HTTP infront of the url else axios will attempt to hit localhost and give error  ..also use HTTP only and not HTTPS)
                     - then change the above to get the temperature only( of London)
@@ -46,3 +49,6 @@ Create API's to do each of the following:
                     "url": "https://i.imgflip.com/5mvxax.jpg",
                     "page_url": "https://imgflip.com/i/5mvxax"
                 }
+
+
+<!-- localhost:3000/memeCreater?template_id=124822590&text0=Sarkai lo takiya Jaada lgi&text1=Jaade me Balma Pyara Lgi&username=chewie12345&password=meme@123 -->
